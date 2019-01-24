@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NameForm from './NameForm';
+
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -11,9 +11,9 @@ class NameForm extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    this.name = event.target.value;
   }
-
-  handleSubmit(event) {
+    handleSubmit(event) {
     alert('Welcome and Greetings, ' + this.state.value);
     event.preventDefault();
   }
@@ -31,9 +31,4 @@ class NameForm extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <NameForm />,
-  document.getElementById('root')
-);
-
-export default NameForm;
+  export default NameForm;

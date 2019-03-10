@@ -21,14 +21,10 @@ export default class App extends React.Component {
   onPress(event) {
 
     if (/^[A-Za-z]+$/.test(this.state.value)) {
-      this.setState({
-        nameAvailable: true
-      });
+      this.setState({nameAvailable: true});
 
     } else {
-      this.setState({
-        isValid: false
-      });
+      this.setState({isValid: false});
 
     }
     event.preventDefault();

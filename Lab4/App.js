@@ -1,3 +1,4 @@
+// Added Features (Time and Date)
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import WeatherProject from './weather_project';

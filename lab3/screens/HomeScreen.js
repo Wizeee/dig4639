@@ -25,7 +25,7 @@ export default class HomeScreen extends React.Component {
     const {navigate} = this.props.navigation;
     const music = require('../assets/images/bard.jpg');
     const light = require('../assets/images/paladin.jpg');
-    const magic = require('../assets/images/Wizard.jpg');
+    const magic = require('../assets/images/wizard.jpg');
 
     return (
       <View style={styles.container}>

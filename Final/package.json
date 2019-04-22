@@ -1,7 +1,7 @@
 {
-  "name": "smarterweather",
+  "name": "angry",
   "version": "0.0.0",
-  "description": "lenhnny/dig4639 @ Apr 10, 2019",
+  "description": "kevcua58/dig4639c @ Apr 3, 2019",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
@@ -9,6 +9,7 @@
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-navigation": "^3.5.1"
+    "@expo/samples": "2.1.1",
+    "react-navigation": "^3.0.9"
   }
 }

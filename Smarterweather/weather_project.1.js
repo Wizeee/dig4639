@@ -4,7 +4,8 @@ import {
   Text,
   View,
   TextInput,
-  AsyncStorage
+  AsyncStorage,
+  ScrollView
 } from "react-native";
 import Button from "./Button";
 import * as Expo from "expo";
@@ -25,9 +26,11 @@ import OpenWeatherMap from "./open_weather_map";
 class WeatherProject extends Component {
   constructor(props) {
     super(props);
-    this.state = { forecast: null };
+    this.state = { forecast: null,
+    time: null,
+    };
   }
-  
+
   doCallbackWork = () => {
     function always() {
       console.log('I am always executed! error or success');
@@ -221,6 +224,13 @@ class WeatherProject extends Component {
       .catch(error => console.error("AsyncStorage error: " + error.message))
       .done();
       this._retrieveData();
+      
+
+      setInterval(() => {
+        this.setState({
+          time: new Date().toLocaleString()
+        })
+      },1000)
   }
 
   _getForecastForZip = zip => {
@@ -247,9 +257,13 @@ class WeatherProject extends Component {
     this._getForecastForZip(zip);
   };
 
+  componentWillMount() {
+
+  }
+
   render() {
     let content = null;
-    console.log("Rendered" + this.state.newPostImage);
+    //console.log("Rendered" + this.state.newPostImage);
     if (this.state.forecast !== null) {
       content = (
         <View style={styles.row}>
@@ -264,6 +278,7 @@ class WeatherProject extends Component {
     return (
       <PhotoBackdrop image={this.state.newPostImage} >
         <View style={styles.overlay}>
+        <ScrollView style={styles.container}>
           <View style={styles.row}>
             <Text style={textStyles.mainText}>
               Forecast for
@@ -276,7 +291,10 @@ class WeatherProject extends Component {
               />
             </View>
           </View>
-
+          {content}
+          <View style = {styles.row}>
+          <Text style = {{fontSize: 30, color: 'white'}}>{this.state.time}</Text>
+          </View>
           <View style={styles.row}>
             <LocationButton onGetCoords={this._getForecastForCoords} />
           </View>
@@ -286,18 +304,7 @@ class WeatherProject extends Component {
           <View style={styles.row}>
             <Button onPress={this.doAsyncWork} label="Do Async Work"></Button>
           </View>
-          <View style={styles.row}>
-            <Button onPress={this.doAsyncWork2} label="Do Async Work"></Button>
-          </View>
-          <View style={styles.row}>
-            <Button onPress={this.doCallbackWork1} label="Callbacks 2"></Button>
-          </View>
-          <View style={styles.row}>
-            <Button onPress={this.doCallbackWork} label="Callbacks"></Button>
-          </View>
-
-          {content}
-
+          </ScrollView>
         </View>
       </PhotoBackdrop>
     );

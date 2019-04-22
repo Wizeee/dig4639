@@ -25,7 +25,8 @@ import OpenWeatherMap from "./open_weather_map";
 class WeatherProject extends Component {
   constructor(props) {
     super(props);
-    this.state = { forecast: null };
+    this.state = { forecast: null,
+    time: null };
   }
 
     
@@ -84,6 +85,18 @@ class WeatherProject extends Component {
       }
 
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      initialPosition => {
+        this._getForecastForCoords (
+          initialPosition.coords.latitude,
+          initialPosition.coords.longitude);
+      },
+      error => {
+        alert(error.message);
+      },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     AsyncStorage
       .getItem(STORAGE_KEY)
       .then(value => {
@@ -94,6 +107,13 @@ class WeatherProject extends Component {
       .catch(error => console.error("AsyncStorage error: " + error.message))
       .done();
       this._retrieveData();
+
+      setInterval(() => {
+        this.setState({
+          time: new Date().toLocaleString()
+        })
+      },1000)
+      
   }
 
   _getForecastForZip = zip => {
@@ -108,9 +128,17 @@ class WeatherProject extends Component {
       this.setState({ forecast: forecast });
     });
   };
+  
 
   _getForecastForCoords = (lat, lon) => {
     OpenWeatherMap.fetchLatLonForecast(lat, lon)
+      .then(forecast => {
+        this.setState({ forecast: forecast });
+    });
+  };
+
+  _getForecastForCoords2 = (lat2, lon2) => {
+    OpenWeatherMap.fetchLatLonForecast2(lat2, lon2)
       .then(forecast => {
         this.setState({ forecast: forecast });
     });
@@ -121,9 +149,10 @@ class WeatherProject extends Component {
     this._getForecastForZip(zip);
   };
 
+
   render() {
     let content = null;
-    console.log("Rendered" + this.state.newPostImage);
+    //console.log("Rendered" + this.state.newPostImage);
     if (this.state.forecast !== null) {
       content = (
         <View style={styles.row}>
@@ -151,15 +180,16 @@ class WeatherProject extends Component {
               />
             </View>
           </View>
-
-          <View style={styles.row}>
-            <LocationButton onGetCoords={this._getForecastForCoords} />
-          </View>
           <View style={styles.row}>
             <Button onPress={this.checkMultiPermissions} label="Choose Image"></Button>
           </View>
+          <View style={styles.row}>
+            <Button onPress={() => this.props.navigation.navigate('Settings')} label="Settings"></Button>
+          </View>
+          <View style = {styles.row}>
+          <Text style = {{fontSize: 30, color: 'white'}}>{this.state.time}</Text>
+          </View>
           {content}
-
         </View>
       </PhotoBackdrop>
     );

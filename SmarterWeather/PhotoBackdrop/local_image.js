@@ -7,7 +7,7 @@ import styles from "./style.js";
 class PhotoBackdrop extends Component {
   state = {image:this.props.image};
   render() {
-    console.log(this.props.image)
+    //console.log(this.props.image)
     if(this.props.image == undefined)
       this.state.image = require('./flowers.png');
     else

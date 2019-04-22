@@ -9,7 +9,7 @@ export default class Detail extends React.Component {
 
 		return (
 			<View style={styles.container}>
-				<Text style={styles.getStartedText}>Dungeons and Dragons Classes: {JSON.stringify(dnd)}</Text>
+				<Text style={styles.getStartedText}>Dungeons and Dragons Class: {JSON.stringify(dnd)}</Text>
 			</View>
 		)
 	}

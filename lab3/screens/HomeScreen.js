@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
                     {key: 'Paladin',image: light},
                     {key: 'Wizard',image: magic}]}
              keyExtractor={this._keyExtractor}
-              renderItem={({item}) => <TouchableOpacity onPress={(event) => { this.props.navigation.navigate('Details', {goTeam: item.key}) }}>
+              renderItem={({item}) => <TouchableOpacity onPress={(event) => { this.props.navigation.navigate('Details', {dnd: item.key}) }}>
                 <Image source={item.image} style={{width:250,height:250}} />
               </TouchableOpacity>}
             />

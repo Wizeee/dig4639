@@ -51,7 +51,7 @@ const classes = { rows: [
      type:'Martial'},
 
      {key:'role6',
-      image: require('../assets/images/monk.png'),
+      image: require('../assets/images/monk.jpg'),
       title:'Monk',
       info:'A master of martial arts, harnessing the power of the body in pursuit of physical and spiritual perfection.',
       type:'Psionic'},

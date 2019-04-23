@@ -109,7 +109,7 @@ state = roles;
 
 //filter
   buttonFilterAll = () => {
-    this.setState(roles);
+    this.setState(classes);
   };
   buttonFilterA = () => {
     this.setState({ rows: this.state.rows.filter((row) => row.type  === 'Divine')});

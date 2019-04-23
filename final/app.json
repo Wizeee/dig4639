@@ -23,6 +23,10 @@
     },
     "ios": {
       "supportsTablet": true
+
+    },
+      "android": {
+      "package": "ucf dig4639c final"
     }
   }
 }

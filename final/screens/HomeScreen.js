@@ -105,7 +105,7 @@ export default class HomeScreen extends React.Component {
 }
 
 
-state = roles;
+state = classes;
 
 //filter
   buttonFilterAll = () => {
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
   },
   getStartedText: {
     fontSize: 30,
-    color: 'rgba(96,100,109, 1)',
+    color: 'rgba(255,255,255,1)',
     //lineHeight: 24,
     textAlign: 'center',
     paddingBottom:15,

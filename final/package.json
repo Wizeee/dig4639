@@ -1,7 +1,7 @@
 {
-  "name": "angry",
+  "name": "m",
   "version": "0.0.0",
-  "description": "kevcua58/dig4639c @ Apr 3, 2019",
+  "description": "hu328745 @ Apr 22, 2019",
   "author": null,
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
@@ -10,6 +10,6 @@
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "@expo/samples": "2.1.1",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.6.1"
   }
 }

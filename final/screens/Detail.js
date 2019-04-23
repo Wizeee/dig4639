@@ -1,31 +1,49 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, View, Text, Image, StyleSheet, ImageBackground, ScrollView } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
 
 export default class Detail extends React.Component {
-	render () {
-		const {navigation} = this.props;
-		const dnd = navigation.getParam('dnd', '');
+  static navigationOptions = {
+    header: null
+  };
 
-		return (
-			<View style={styles.container}>
-				<Text style={styles.getStartedText}>Dungeons and Dragons Class: {JSON.stringify(dnd)}</Text>
-			</View>
-		)
-	}
-}
+  render() {
+    const passedImage = this.props.navigation.getParam("roleImage", "defaultValue");
+    const passedTitle = this.props.navigation.getParam("roleTitle", "defaultValue");
+    const passedInfo = this.props.navigation.getParam("roleInfo", "defaultValue");
+    return (
+    <ImageBackground source={require('../assets/images/dungeons.jpg')} style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <Image source={passedImage} style={styles.image}/>
+          <Text style={styles.imageTitle}>{passedTitle}</Text>
+          <Text style={styles.imageAuthor}>{passedInfo}</Text>
+          <Button title="Back" onPress={() => this.props.navigation.goBack()}
+          />
+        </View>
+      </ImageBackground>
+
+    );
+   }
+  }
 
 const styles = StyleSheet.create({
+  imageTitle: {
+    fontSize: 30,
+  },
+  imageAuthor: {
+    fontSize:15,
+    padding:10,
+  },
+  image:{
+    marginTop:25,
+    width:200,
+    height:200,
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-  },
-  getStartedText: {
-    fontSize: 20,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 15,
+    //justifyContent:'center',
+    alignItems: 'center',
+    //marginHorizontal: 10,
   },
 });
